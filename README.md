@@ -11,5 +11,5 @@ POS (Point of Sale System)
 </ul>
 <h1>Stack of Back-End</h1>
 <ul>
-  <li>Coming..</li>
+  <li>Coming.. soon</li>
 </ul>
