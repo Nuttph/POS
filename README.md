@@ -4,10 +4,10 @@ POS (Point of Sale System)
 <br>
 # Tech Stack
 <h1>Front-End</h1>
-<ol>
+<ul>
   <li>Next.JavaScript</li>
   <liTypeScript></li>
   <li>TailwindCSS / MUI</li>
   <li>Redux</li>
-</ol>
+</ul>
 
