@@ -1,3 +1,9 @@
+import Stock from "./components/main/Stock";
+
 export default function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <Stock />
+    </div>
+  );
 }
