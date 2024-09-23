@@ -1,9 +1,9 @@
-import Stock from "./components/main/Stock";
+import Main from "./components/main/Main";
 
 export default function Home() {
   return (
     <div>
-      <Stock />
+      <Main />
     </div>
   );
 }
