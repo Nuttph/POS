@@ -1,22 +1,32 @@
+"use client";
 import React, { useEffect, useState } from "react";
 import { Spin as Hamburger } from "hamburger-react";
-import { data, Propdata, Product } from "@/app/store/product";
+import { data, Product } from "@/app/store/product";
+
 const POSC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [sn, setSn] = useState<string>("");
-  const [sendSn, setSendSn] = useState<string>();
+  // const [sendSn, setSendSn] = useState<string>();
   const [getData, setGetData] = useState<Product>();
+  const [listProduct, setListProduct] = useState([]);
+
+  const [total, setTotal] = useState(0);
+
   useEffect(() => {
     setGetData(data[0].result);
   }, []);
+  // var productlist = [];
   const sendAPI = () => {
-    const checkSn = getData?.filter((e) => e.creditCard.number == sn);
-    setSendSn(checkSn[0]);
-    console.log(checkSn[0]);
-    // console.log(getData);
+    const checkSn = getData?.filter((e: any) => e.productID == sn);
+    // productlist.push(checkSn[0]);
+    setListProduct((prev) => [...prev, checkSn[0]]);
+    console.log(listProduct);
+    setTotal(total + Number(checkSn[0].price));
   };
   return (
     <>
+      <div>978-0-357-08733-6</div>
+      <div>978-0-480-63838-2</div>
       <div className="w-full pt-[25px] pl-[80px] bg-[#112776] h-[100vh] relative">
         <div
           className={`absolute duration-[0.3s] ${
@@ -58,23 +68,29 @@ const POSC = () => {
                   />
                 </label>
                 <button className="bg-green-600 hover:bg-green-700 duration-300 px-2 rounded-md">
-                  Check
+                  ADD
                 </button>
               </form>
             </div>
-            <div>
-              {sendSn && (
+            <div className="w-full flex flex-col">
+              {listProduct && (
                 <>
-                  <div className="flex flex-row justify-between bg-blue-100">
-                    <div>
-                      Product Name : <span>{sendSn.productName}</span>
+                  {listProduct.map((item, index) => (
+                    <div
+                      key={index}
+                      className={`${
+                        index % 2 == 0 ? "bg-blue-200" : "bg-pink-200"
+                      } flex flex-row justify-between w-full`}
+                    >
+                      <div key={index}>{item.productName}</div>
+                      <div key={index}>{item.price}</div>
                     </div>
-                    <div>
-                      Product Name : <span>{sendSn.price} Bath</span>
-                    </div>
-                  </div>
+                  ))}
                 </>
               )}
+              <div className="flex flex-row justify-end">
+                {total == 0 ? <></> : <>total : {total.toFixed(2)}</>}
+              </div>
             </div>
           </div>
         </div>
