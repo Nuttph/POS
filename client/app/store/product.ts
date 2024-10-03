@@ -1,3 +1,50 @@
+interface Location {
+  street: string;
+  city: string;
+  state: string;
+  country: string;
+  zip: string;
+  coordinates: {
+    latitude: string;
+    longitude: string;
+  };
+}
+
+interface Job {
+  title: string;
+  descriptor: string;
+  area: string;
+  type: string;
+  company: string;
+}
+
+interface CreditCard {
+  number: string;
+  cvv: string;
+  issuer: string;
+}
+
+export interface Product {
+  productName: string;
+  productDes: string;
+  price: string;
+  password: string;
+  productID: string;
+  zipcode: string;
+  emails: string[];
+  location: Location;
+  website: string;
+  domain: string;
+  job: Job;
+  creditCard: CreditCard;
+  uuid: string;
+  objectId: string;
+}
+
+export interface Propdata {
+  result: Product[];
+}
+
 export const data = [
   {
     result: [
