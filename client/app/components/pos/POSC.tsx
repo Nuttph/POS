@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from "react";
 import { Spin as Hamburger } from "hamburger-react";
 import { data, Product } from "@/app/store/product";
+import Box from "@mui/material/Box";
+import Modal from "@mui/material/Modal";
+import Button from "@mui/material/Button";
 
 const POSC = () => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
@@ -45,7 +48,7 @@ const POSC = () => {
             }}
           />
         </div>
-        <div className="h-full bg-[#ffffff] rounded-md p-[35px]">
+        <div className="h-full bg-[#ffffff] rounded-md p-[35px] flex flex-col">
           <div className="flex flex-col">
             <div className="flex flex-row">
               <form
@@ -92,6 +95,27 @@ const POSC = () => {
                 {total == 0 ? <></> : <>total : {total.toFixed(2)}</>}
               </div>
             </div>
+          </div>
+          <div className="flex w-full justify-end">
+            <button className="px-4 py-2 bg-blue-200 hover:bg-blue-300 duration-300 rounded-md">
+              Buy
+            </button>
+            <Button onClick={handleOpen}>Open modal</Button>
+            <Modal
+              open={open}
+              onClose={handleClose}
+              aria-labelledby="parent-modal-title"
+              aria-describedby="parent-modal-description"
+            >
+              <Box sx={{ ...style, width: 400 }}>
+                <h2 id="parent-modal-title">Text in a modal</h2>
+                <p id="parent-modal-description">
+                  Duis mollis, est non commodo luctus, nisi erat porttitor
+                  ligula.
+                </p>
+                <ChildModal />
+              </Box>
+            </Modal>
           </div>
         </div>
       </div>
